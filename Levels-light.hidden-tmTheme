@@ -93,7 +93,62 @@
                 <string>#faadba</string>
             </dict>
         </dict> 
-<dict>
+        <dict> 
+            <key>name</key>
+            <string>Level5</string>
+            <key>scope</key>
+            <string>level5</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#c9bfff</string>
+            </dict>
+        </dict> 
+        <dict> 
+            <key>name</key>
+            <string>Level6</string>
+            <key>scope</key>
+            <string>level6</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#f9b5ff</string>
+            </dict>
+        </dict> 
+        <dict> 
+            <key>name</key>
+            <string>Level7</string>
+            <key>scope</key>
+            <string>level7</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#c7c7c7</string>
+            </dict>
+        </dict> 
+        <dict> 
+            <key>name</key>
+            <string>Level8</string>
+            <key>scope</key>
+            <string>level8</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#ffc47d</string>
+            </dict>
+        </dict> 
+        <dict> 
+            <key>name</key>
+            <string>Level9</string>
+            <key>scope</key>
+            <string>level9</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#cf9369</string>
+            </dict>
+        </dict> 
+        <dict>
             <key>name</key>
             <string>Comment</string>
             <key>scope</key>
