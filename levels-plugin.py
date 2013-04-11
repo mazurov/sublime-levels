@@ -52,11 +52,6 @@ def plugin_loaded():
     sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
 
 
-def scopes():
-    return ["level0", "level1", "level2", "level3", "level4", "variable",
-            "constant.numeric", "keyword.operator"]
-
-
 def colorize(view, result):
     levels = defaultdict(list)
     # group levels
@@ -67,7 +62,7 @@ def colorize(view, result):
 
     for l in levels.keys():
         name = "level%d" % l
-        view.add_regions(name, levels[l], scopes()[l], "",
+        view.add_regions(name, levels[l], name, "",
                          sublime.DRAW_NO_OUTLINE
                          )
     return max(levels.keys()) + 1
