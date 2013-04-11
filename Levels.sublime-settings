@@ -1,0 +1,10 @@
+{
+    "color_scheme": "Packages/levels-sublime/Levels-light.hidden-tmTheme",
+    "live": false,
+    "modes": [
+        {
+            "syntax": "JavaScript", 
+            "engine": "jslint"
+        }
+    ]
+}
