@@ -18,7 +18,7 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 
 * Clone or download git repo into your packages folder (In SublimeText ```Preferences->Browse Packages...``` menu item to open this folder):
-   - Clone: ```git clone https://github.com/mazurov/sublime-levels.git```
+   - Clone: ```git clone https://github.com/mazurov/sublime-levels.git Levels```
    - Download: https://github.com/mazurov/sublime-levels/archive/master.zip and extract sublime-levels-master to the packages folder.
 
 or
