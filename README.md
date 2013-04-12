@@ -23,11 +23,11 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 or
 
-* Use Package Control:
+* Use Package Control (until it's officially added to the [community packages list](http://wbond.net/sublime_packages/community) of ST plugins.) :
     * Preferences
     * Package Control
     * Add Repository
-    * Insert the repository Url (should be `git://github.com/mazurov/sublime-levels.git`)
+    * Insert the repository Url (should be `https://github.com/mazurov/sublime-levels.git`)
     * Then install it normally via Package Control by doing `Ctrl` + `Shift` + `P` -> `Install Package` -> `sublime-levels`
 
 
