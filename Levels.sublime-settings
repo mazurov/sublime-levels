@@ -1,6 +1,6 @@
 {
     "live": false,    
-    "color_scheme": "Packages/sublime-levels/Levels-light.hidden-tmTheme",
+    "color_scheme": "Packages/${levels_plugin_name}/Levels-light.hidden-tmTheme",
     "modes": [
         {
             "syntax": "JavaScript", 

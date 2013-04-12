@@ -13,6 +13,19 @@ BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 PACKAGES_PATH = sublime.packages_path() or os.path.dirname(BASE_PATH)
 sys.path += [BASE_PATH]
 
+# Views session storage
+SESSION = defaultdict(dict)
+
+# Default ST settings
+USER_SETTINGS = None
+
+# Plugin variable for replacement in strings
+PLUGIN_VARS = {
+    "levels_path": BASE_PATH, 
+    "levels_plugin_name": os.path.split(BASE_PATH)[-1]
+}
+
+
 # Make sure all dependencies are reloaded on upgrade
 if 'levels.reloader' in sys.modules:
     imp.reload(sys.modules['levels.reloader'])
@@ -23,11 +36,6 @@ import levels.pyv8delegate as pyv8delegate
 import levels.jslint
 
 
-# Views session storage
-SESSION = defaultdict(dict)
-
-# Default ST settings
-USER_SETTINGS = None
 
 
 def is_st3():
@@ -133,6 +141,13 @@ def reset_view(view):
     remove_from_session(view)
 
 
+def process_variables(source):
+    result = source
+    for v in PLUGIN_VARS:
+        result = result.replace("${%s}" % v, PLUGIN_VARS[v])
+    return result
+
+
 class LevelsUpdateCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, command=None, output='', begin=0, region=None):
@@ -141,10 +156,11 @@ class LevelsUpdateCommand(sublime_plugin.TextCommand):
             engine = find_engine(mode)
 
             old_color_scheme = self.view.settings().get("color_scheme")
-            self.view.settings().set(
-                "color_scheme",
+            color_scheme = process_variables(
                 settings().get("color_scheme", old_color_scheme)
             )
+
+            self.view.settings().set("color_scheme", color_scheme)
 
             session()[self.view.id()]["engine"] = engine
             session()[self.view.id()]["color_scheme"] = old_color_scheme
