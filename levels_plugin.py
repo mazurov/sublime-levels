@@ -87,7 +87,7 @@ def init():
     for p in pyv8_paths:
         pyv8loader.unpack_pyv8(p)
 
-    delegate = pyv8delegate.SublimeLoaderDelegate(settings=user_settings())
+    delegate = pyv8delegate.SublimeLoaderDelegate(user_settings=user_settings())
     pyv8loader.load(pyv8_paths[1], delegate)
 
 

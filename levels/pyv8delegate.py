@@ -8,7 +8,11 @@ import levels.pyv8loader as pyv8loader
 
 
 class SublimeLoaderDelegate(pyv8loader.LoaderDelegate):
-    def __init__(self, settings):
+    def __init__(self, user_settings):
+        settings = {}
+        for k in ['http_proxy', 'https_proxy', 'timeout']:
+                if user_settings.has(k):
+                    settings[k] = user_settings.get(k, None)
         pyv8loader.LoaderDelegate.__init__(self, settings)
         self.state = None
         self.message = 'Loading PyV8 binary, please wait'
@@ -37,7 +41,7 @@ class SublimeLoaderDelegate(pyv8loader.LoaderDelegate):
     def on_complete(self, *args, **kwargs):
         self.state = 'complete'
 
-    def on_error(self, exit_code=-1, thread=None):
+    def on_error(self, exit_code=-1, progress=None):
         self.state = 'error'
         sublime.set_timeout(lambda: show_pyv8_error(exit_code), 0)
 
