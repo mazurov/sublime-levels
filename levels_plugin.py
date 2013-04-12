@@ -7,7 +7,7 @@ import imp
 from collections import defaultdict
 
 __author__ = 'Sasha Mazurov (alexander.mazurov@gmail.com)'
-__version__ = '0.1'
+__version__ = '0.1.0'
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 PACKAGES_PATH = sublime.packages_path() or os.path.dirname(BASE_PATH)
@@ -21,7 +21,7 @@ USER_SETTINGS = None
 
 # Plugin variable for replacement in strings
 PLUGIN_VARS = {
-    "levels_path": BASE_PATH, 
+    "levels_path": BASE_PATH,
     "levels_plugin_name": os.path.split(BASE_PATH)[-1]
 }
 
@@ -34,8 +34,6 @@ import levels.reloader
 import levels.pyv8loader as pyv8loader
 import levels.pyv8delegate as pyv8delegate
 import levels.jslint
-
-
 
 
 def is_st3():
