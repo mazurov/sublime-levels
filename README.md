@@ -70,7 +70,7 @@ By default the plugin use a modified version of the default theme ```Solarized (
 ```
 
 , and update ```color_scheme``` value in plugin settings (applied only for
-scope coloring mode) or in User settings.
+scope coloring mode) or in default user settings.
 
 
 ## Known issues.
