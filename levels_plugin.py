@@ -143,8 +143,7 @@ class LevelsUpdateCommand(sublime_plugin.TextCommand):
             old_color_scheme = self.view.settings().get("color_scheme")
             self.view.settings().set(
                 "color_scheme",
-                settings().get("color_scheme",
-                               "Packages/sublme-levels/Levels.hidden-tmTheme")
+                settings().get("color_scheme", old_color_scheme)
             )
 
             session()[self.view.id()]["engine"] = engine
