@@ -1,6 +1,6 @@
 # Levels
 
-**SublimeText** plugin for scope context coloring. 
+**SublimeText** plugin for scope context coloring.
 Inspired by [Douglas Crockford idea](https://plus.google.com/u/0/113127438179392830442/posts/XjR4WmSDFAV)
 
 By Sasha Mazurov (alexander.mazurov@gmail.com)
@@ -13,7 +13,7 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 ## How to install
 
-**WARNING:** this plugin may not work at all in some OSes since it written in JavaScript and uses PyV8 and Google V8 binaries to run. 
+**WARNING:** this plugin may not work at all in some OSes since it written in JavaScript and uses PyV8 and Google V8 binaries to run.
 
 
 
@@ -23,7 +23,12 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 or
 
-* Use Package Control: Install ```Levels``` _(not yet available)_
+* Use Package Control:
+    * Preferences
+    * Package Control
+    * Add Repository
+    * Insert the repository Url (should be `git://github.com/mazurov/sublime-levels.git`)
+    * Then install it normally via Package Control by doing `Ctrl` + `Shift` + `P` -> `Install Package` -> `sublime-levels`
 
 
 **WARNING:** When plugin is installed, it will automatically download required PyV8 binary so you have to wait a bit (see Loading PyV8 binary message on status bar). If you experience issues with automatic PyV8 loader, try to install it manually.
@@ -33,7 +38,7 @@ or
 * Enable scope context coloring: __Levels: Update__ ```Ctrl+Shift+L```
 * Restore original coloring: __Levels: Off__ ```Ctrl+Shift+O```
 
-* The **live** coloring mode  is not switched on by default (the current plugin version works slow for large scripts). You can enable it in settings  by```"live": true```. 
+* The **live** coloring mode  is not switched on by default (the current plugin version works slow for large scripts). You can enable it in settings  by```"live": true```.
 * The code is automatically colored after a save action.
 
 
@@ -56,7 +61,7 @@ By default the plugin use a modified version of the default theme ```Solarized (
             </dict>
         </dict>
     ...
-        <dict> 
+        <dict>
             <key>name</key>
             <string>Level9</string>
             <key>scope</key>
@@ -66,7 +71,7 @@ By default the plugin use a modified version of the default theme ```Solarized (
                 <key>foreground</key>
                 <string>#cf9369</string>
             </dict>
-        </dict>    
+        </dict>
 ```
 
 , and update ```color_scheme``` value in plugin settings (applied only for
