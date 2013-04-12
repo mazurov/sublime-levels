@@ -1,11 +1,11 @@
 # Levels
 
-**SublimeText3** plugin for scope context coloring. 
+**SublimeText** plugin for scope context coloring. 
 Inspired by [Douglas Crockford idea](https://plus.google.com/u/0/113127438179392830442/posts/XjR4WmSDFAV)
 
 By Sasha Mazurov (alexander.mazurov@gmail.com)
 
-![Demo](https://raw.github.com/mazurov/Levels/master/examples/levels_demo.gif)
+![Demo](https://raw.github.com/mazurov/sublime-levels/master/examples/levels_demo.gif)
 
 ## Suported languages
 
