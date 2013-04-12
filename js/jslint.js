@@ -1,5 +1,5 @@
 // jslint.js
-// 2013-04-06
+// 2013-04-09
 
 // Copyright (c) 2002 Douglas Crockford  (www.JSLint.com)
 
@@ -279,7 +279,7 @@
 // The global directive is used to declare global variables that can
 // be accessed by the program. If a declaration is true, then the variable
 // is writeable. Otherwise, it is read-only.
- 
+
 // We build the application inside a function so that we produce only a single
 // global variable. That function will be invoked immediately, and its return
 // value is the JSLINT function itself. That function is also an object that
@@ -313,8 +313,8 @@ var JSLINT = (function () {
             evil      : true,
             forin     : true,
             indent    :   10,
-            maxerr    : 10000,
-            maxlen    :  100000,
+            maxerr    : 1000,
+            maxlen    :  256,
             newcap    : true,
             node      : true,
             nomen     : true,
@@ -986,7 +986,7 @@ var JSLINT = (function () {
                 while (pos >= source_row.length) {
                     pos = 0;
                     if (!next_line()) {
-                        stop_at('unclosed', line, from);
+                        stop_at('unclosed', line - 1, from);
                     }
                 }
                 c = source_row.charAt(pos);
@@ -4478,7 +4478,7 @@ klass:              do {
             level,
             line,
             result = [],
-            thru, 
+            thru,
             token = data.tokens[0];
         while (token && token.id !== '(end)') {
             from = token.from;
@@ -4499,12 +4499,11 @@ klass:              do {
             });
         }
         return result;
-        
     };
 
     itself.jslint = itself;
 
-    itself.edition = '2013-04-06';
+    itself.edition = '2013-04-09';
 
     return itself;
 }());
