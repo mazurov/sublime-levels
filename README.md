@@ -7,7 +7,7 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 <img src="https://raw.github.com/mazurov/sublime-levels/master/examples/levels_demo.gif" width="600" height="375"/>
 
-## Suported languages
+## Supported languages
 
 * **JavaScript:** Uses [JsLint](https://github.com/douglascrockford/JSLint) and V8 Python binding  &mdash; [PyV8](https://github.com/emmetio/pyv8-binaries)
 
