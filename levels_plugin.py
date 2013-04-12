@@ -105,9 +105,7 @@ def colorize(view, result):
         levels[level].append(sublime.Region(vx1, vx2))
 
     options = sublime.PERSISTENT
-    if is_st3():
-        options |= sublime.DRAW_NO_OUTLINE
-    
+   
     for l in levels.keys():
         name = "level%d" % l
         view.add_regions(name, levels[l], name, "",options)
@@ -146,7 +144,7 @@ class LevelsUpdateCommand(sublime_plugin.TextCommand):
                 "color_scheme",
                 settings().get(
                     "color_scheme",
-                    "Packages/levels-sublime/Levels-light.hidden-tmTheme"
+                    "Packages/sublime-levels/Levels-light.hidden-tmTheme"
                 )
             )
 

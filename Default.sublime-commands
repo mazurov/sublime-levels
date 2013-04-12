@@ -1,0 +1,10 @@
+[
+    {
+        "caption": "Levels: Update",
+        "command": "levels_update"
+    },
+    {
+        "caption": "Levels: Off",
+        "command": "levels_off"
+    }
+]
