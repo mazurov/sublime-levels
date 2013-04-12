@@ -2,28 +2,52 @@ import sys
 import os
 import sublime
 import sublime_plugin
-import importlib
 import imp
 
 from collections import defaultdict
 
+__author__ = 'Sasha Mazurov (alexander.mazurov@gmail.com)'
+__version__ = '0.1'
+
+BASE_PATH = os.path.abspath(os.path.dirname(__file__))
+PACKAGES_PATH = sublime.packages_path() or os.path.dirname(BASE_PATH)
+sys.path += [BASE_PATH]
+
+# Make sure all dependencies are reloaded on upgrade
+if 'levels.reloader' in sys.modules:
+    imp.reload(sys.modules['levels.reloader'])
+
+import levels.reloader
+import levels.pyv8loader as pyv8loader
+import levels.pyv8delegate as pyv8delegate
+import levels.jslint
+
+
+# Views session storage
 SESSION = defaultdict(dict)
+
+# Default ST settings
+USER_SETTINGS = None
+
+
+def is_st3():
+    return sublime.version()[0] == '3'
+
+
+def user_settings():
+    return globals()['USER_SETTINGS']
 
 
 def session():
-    return SESSION
+    return globals()['SESSION']
 
 
 def in_session(view):
     return view.id() in session()
 
 
-def log(severity, msg):
-    print("%s (Levels plugin): " + msg)
-
-
-def err(msg):
-    log("ERROR", msg)
+def remove_from_session(view):
+    del session()[view.id()]
 
 
 def settings():
@@ -43,13 +67,33 @@ def mode_settings(syntax):
     return None
 
 
+def init():
+    globals()['USER_SETTINGS'] = sublime.load_settings(
+        'Preferences.sublime-settings'
+    )
+
+    # setup environment for PyV8 loading
+    pyv8_paths = [
+        os.path.join(PACKAGES_PATH, 'PyV8'),
+        os.path.join(PACKAGES_PATH, 'PyV8', pyv8loader.get_arch()),
+        os.path.join(PACKAGES_PATH, 'PyV8', 'pyv8-%s' % pyv8loader.get_arch())
+    ]
+
+    for p in pyv8_paths:
+        if p not in sys.path:
+            sys.path += [p]
+
+    # unpack recently loaded binary, is exists
+    for p in pyv8_paths:
+        pyv8loader.unpack_pyv8(p)
+
+    delegate = pyv8delegate.SublimeLoaderDelegate(settings=user_settings())
+    pyv8loader.load(pyv8_paths[1], delegate)
+
+
 def find_engine(mode_settings):
-    engine = importlib.import_module("levels.%s" % mode_settings["engine"])
+    engine = sys.modules["levels.%s" % mode_settings["engine"]]
     return engine
-
-
-def plugin_loaded():
-    sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
 
 
 def colorize(view, result):
@@ -60,11 +104,13 @@ def colorize(view, result):
                     view.text_point(line - 1, x2 - 1))
         levels[level].append(sublime.Region(vx1, vx2))
 
+    options = sublime.PERSISTENT
+    if is_st3():
+        options |= sublime.DRAW_NO_OUTLINE
+    
     for l in levels.keys():
         name = "level%d" % l
-        view.add_regions(name, levels[l], name, "",
-                         sublime.DRAW_NO_OUTLINE
-                         )
+        view.add_regions(name, levels[l], name, "",options)
     return max(levels.keys()) + 1
 
 
@@ -85,7 +131,7 @@ def reset_view(view):
     for l in range(view_session["nlevels"]):
         view.erase_regions("level%d" % l)
     view.settings().set("color_scheme", view_session["color_scheme"])
-    del session()[view.id()]
+    remove_from_session(view)
 
 
 class LevelsUpdateCommand(sublime_plugin.TextCommand):
@@ -131,3 +177,10 @@ class LevelsListener(sublime_plugin.EventListener):
     def on_post_save(self, view):
         if in_session(view):
             update_view(view)
+
+
+def plugin_loaded():
+    init()
+
+if not is_st3():
+    sublime.set_timeout(init, 200)
