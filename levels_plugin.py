@@ -87,7 +87,8 @@ def init():
     for p in pyv8_paths:
         pyv8loader.unpack_pyv8(p)
 
-    delegate = pyv8delegate.SublimeLoaderDelegate(user_settings=user_settings())
+    delegate = pyv8delegate.SublimeLoaderDelegate(
+        user_settings=user_settings())
     pyv8loader.load(pyv8_paths[1], delegate)
 
 
@@ -105,10 +106,10 @@ def colorize(view, result):
         levels[level].append(sublime.Region(vx1, vx2))
 
     options = sublime.PERSISTENT
-   
+
     for l in levels.keys():
         name = "level%d" % l
-        view.add_regions(name, levels[l], name, "",options)
+        view.add_regions(name, levels[l], name, "", options)
     return max(levels.keys()) + 1
 
 
@@ -142,10 +143,8 @@ class LevelsUpdateCommand(sublime_plugin.TextCommand):
             old_color_scheme = self.view.settings().get("color_scheme")
             self.view.settings().set(
                 "color_scheme",
-                settings().get(
-                    "color_scheme",
-                    "Packages/sublime-levels/Levels-light.hidden-tmTheme"
-                )
+                settings().get("color_scheme",
+                               "Packages/sublme-levels/Levels.hidden-tmTheme")
             )
 
             session()[self.view.id()]["engine"] = engine

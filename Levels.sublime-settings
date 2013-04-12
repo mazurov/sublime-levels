@@ -1,5 +1,5 @@
 {
-    "live": true,    
+    "live": false,    
     "color_scheme": "Packages/sublime-levels/Levels-light.hidden-tmTheme",
     "modes": [
         {
