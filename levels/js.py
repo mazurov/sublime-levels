@@ -47,11 +47,17 @@ def js():
     global V8CONTEXT, JS
     if not JS:
         import_pyv8()
-        files = ["estools.min.js", "colorize.js"]
+        files = [
+            "esprima.js",
+            "estraverse.js",
+            "escope.js",
+            "eslevels.js",
+            "colorize.js"]
 
         V8CONTEXT = PyV8.JSContext()  # noqa
         V8CONTEXT.enter()
         for f in files:
+            print(f)
             src_path = os.path.join(BASE_PATH, "..", "js", f)
             with open(src_path, "r") as fh:
                 V8CONTEXT.eval(fh.read())
