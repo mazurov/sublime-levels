@@ -14,7 +14,7 @@ for mod in sys.modules:
 mods_load_order = [
     'levels.pyv8loader',
     'levels.pyv8delegate',
-    'levels.jslint'
+    'levels.js'
 ]
 
 for mod in mods_load_order:

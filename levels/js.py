@@ -2,7 +2,7 @@ import os
 import sys
 import imp
 
-JSLINT = None
+JS = None
 V8CONTEXT = None
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -43,27 +43,28 @@ def import_pyv8():
         raise ImportError('No PyV8 module found')
 
 
-def jslint():
-    global V8CONTEXT, JSLINT
-    if not JSLINT:
+def js():
+    global V8CONTEXT, JS
+    if not JS:
         import_pyv8()
-        src_path = os.path.join(BASE_PATH, "..", "js", "jslint.min.js")
-        V8CONTEXT = PyV8.JSContext()
+        files = ["estools.min.js", "colorize.js"]
+
+        V8CONTEXT = PyV8.JSContext()  # noqa
         V8CONTEXT.enter()
-        src_file = open(src_path, "r")
-        V8CONTEXT.eval(src_file.read())
-        JSLINT = V8CONTEXT.eval("JSLINT")
-    return JSLINT
+        for f in files:
+            src_path = os.path.join(BASE_PATH, "..", "js", f)
+            with open(src_path, "r") as fh:
+                V8CONTEXT.eval(fh.read())
+        JS = V8CONTEXT.eval("levels")
+    return JS
 
 
 def run(source, options):
-    jslint()(source,{"maxerr":1e+5})
-    color = jslint().color(jslint().data())
+    color = js()(source)
     result = []
-    for k in color.keys():
-        level, line, x1, x2 = (int(color[k].level),
-                               int(color[k].line),
-                               int(color[k]["from"]),
-                               int(color[k]["thru"]))
-        result.append((level, line, x1, x2))
+    for k in color:
+        level, x1, x2 = (int(k[0]),
+                         int(k[1]),
+                         int(k[2]))
+        result.append((level, x1, x2))
     return result

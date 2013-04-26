@@ -9,7 +9,7 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 ## Supported languages
 
-* **JavaScript:** Uses [JsLint](https://github.com/douglascrockford/JSLint) and V8 Python binding  &mdash; [PyV8](https://github.com/emmetio/pyv8-binaries)
+* **JavaScript:** Uses my [eslevels][eslevels] and V8 Python binding  &mdash; [PyV8](https://github.com/emmetio/pyv8-binaries)
 
 ## How to install
 
@@ -80,17 +80,16 @@ scope coloring mode) or in default user settings.
 
 ## Known issues.
 
-### JsLint
+### Eslevels library
 
-JsLint, which is used here for JavaScript coloring, is not an ideal tool for
-JavaScript parsing. It doesn't support modern standard features (for example
-"var" keyword in for cycle), so scope coloring could fail on some scripts.
+If you would like to be sure that your coloring problem is in [eslevels][eslevels] and not in
+this plugin you can check your code on [this page](http://mazurov.github.io/eslevels-demo). 
+If you have the same problems there then it means that the problem is in Eslevels library (or in your code)
 
-If you would like to be sure  that your coloring problem is in JsLint and not in
-this plugin you can check your code on [this page](http://daniellmb.github.io/JavaScript-Scope-Context-Coloring/example/scope-coloring.html#fullmonad). If you have the same problems there then it means that the problem
-is in JsLint (or in your code)
+## Credits
 
-## Thanks
-
-Thanks to [Sergey Chikuyonok](https://github.com/sergeche) for the nice
+* Thanks to [Sergey Chikuyonok](https://github.com/sergeche) for the nice
 idea of using PyV8.
+
+
+[eslevels]: https://github.com/mazurov/eslevels

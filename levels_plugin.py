@@ -33,7 +33,7 @@ if 'levels.reloader' in sys.modules:
 import levels.reloader
 import levels.pyv8loader as pyv8loader
 import levels.pyv8delegate as pyv8delegate
-import levels.jslint
+import levels.js
 
 
 def is_st3():
@@ -106,12 +106,13 @@ def find_engine(mode_settings):
 def colorize(view, result):
     levels = defaultdict(list)
     # group levels
-    for level, line, x1, x2 in result:
-        vx1, vx2 = (view.text_point(line - 1, x1 - 1),
-                    view.text_point(line - 1, x2 - 1))
+    for level, x1, x2 in result:
+        vx1, vx2 = x1, x2+1
         levels[level].append(sublime.Region(vx1, vx2))
 
     options = sublime.PERSISTENT
+    if is_st3():
+        options |= sublime.DRAW_NO_OUTLINE
 
     for l in levels.keys():
         name = "level%d" % l

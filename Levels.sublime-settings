@@ -1,10 +1,13 @@
 {
+    // Copy any modified settings to `User/Levels.sublime-settings`
+    // otherwise modifications will not survive updates.
+
     "live": false,    
     "color_scheme": "Packages/${levels_plugin_name}/Levels-light.hidden-tmTheme",
     "modes": [
         {
             "syntax": "JavaScript", 
-            "engine": "jslint"
+            "engine": "js"
         }
     ]
 }
