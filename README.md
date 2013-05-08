@@ -19,19 +19,16 @@ By Sasha Mazurov (alexander.mazurov@gmail.com)
 
 * Clone or download git repo into your packages folder (In SublimeText ```Preferences->Browse Packages...``` menu item to open this folder):
    - Clone: ```git clone https://github.com/mazurov/sublime-levels.git Levels```
-   or
    - Download: https://github.com/mazurov/sublime-levels/archive/master.zip and extract sublime-levels-master to the packages folder.
 
 or
 
-*  Use Package Control in **SublimeText2** (until it's officially added to the [community packages list](http://wbond.net/sublime_packages/community) of ST plugins.) :
+* Use Package Control (until it's officially added to the [community packages list](http://wbond.net/sublime_packages/community) of ST plugins.) :
     * Preferences
     * Package Control
     * Add Repository
     * Insert the repository Url (should be `https://github.com/mazurov/sublime-levels.git`)
     * Then install it normally via Package Control by doing `Ctrl` + `Shift` + `P` -> `Install Package` -> `sublime-levels`
-
-**WARNING:** Installation with Package Control is currently supported only in SublimeText2. For SublimeText3 use **manual installation**.
 
 
 **WARNING:** When plugin is installed, it will automatically download required PyV8 binary so you have to wait a bit (see Loading PyV8 binary message on status bar). If you experience issues with automatic PyV8 loader, try to install it manually.
