@@ -12,6 +12,7 @@ for mod in sys.modules:
         reload_mods.append(mod)
 
 mods_load_order = [
+    'levels.semver',
     'levels.pyv8loader',
     'levels.pyv8delegate',
     'levels.js'
