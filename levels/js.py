@@ -1,11 +1,16 @@
 import os
 import sys
 import imp
+import codecs
+
+import sublime
 
 JS = None
 V8CONTEXT = None
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
+PACKAGE_PATH = os.path.abspath(os.path.dirname(BASE_PATH))
+
 
 
 def import_pyv8():
@@ -26,10 +31,10 @@ def import_pyv8():
     if f:
         try:
             imp.acquire_lock()
-            globals()['_PyV8'] = imp.load_module(
-                '_PyV8', bin_f, bin_pathname, bin_description)
-            globals()['PyV8'] = imp.load_module(
-                'PyV8', f, pathname, description)
+            globals()['_PyV8'] = imp.load_module('_PyV8', bin_f, bin_pathname,
+                                                 bin_description)
+            globals()['PyV8'] = imp.load_module('PyV8', f, pathname,
+                                                description)
             imp.release_lock()
             loaded = True
         finally:
@@ -41,6 +46,31 @@ def import_pyv8():
 
     if not loaded:
         raise ImportError('No PyV8 module found')
+
+
+def js_file_reader(file_path, use_unicode=True):
+    if hasattr(sublime, 'load_resource'):
+        rel_path = file_path
+        for prefix in [sublime.packages_path(), sublime.installed_packages_path()]:
+            if rel_path.startswith(prefix):
+                rel_path = os.path.join('Packages', rel_path[len(prefix) + 1:])
+                break
+
+        rel_path = rel_path.replace('.sublime-package', '')
+        # for Windows we have to replace slashes
+        rel_path = rel_path.replace('\\', '/')
+
+        return sublime.load_resource(rel_path)
+
+    if use_unicode:
+        f = codecs.open(file_path, 'r', 'utf-8')
+    else:
+        f = open(file_path, 'r')
+
+    content = f.read()
+    f.close()
+
+    return content
 
 
 def js():
@@ -57,15 +87,15 @@ def js():
         V8CONTEXT = PyV8.JSContext()  # noqa
         V8CONTEXT.enter()
         for f in files:
-            src_path = os.path.join(BASE_PATH, "..", "js", f)
-            with open(src_path, "r") as fh:
-                V8CONTEXT.eval(fh.read())
+            src_path = os.path.join(PACKAGE_PATH, "js", f)
+            code = js_file_reader(src_path)
+            V8CONTEXT.eval(code)
         JS = V8CONTEXT.eval("levels")
     return JS
 
 
 def run(source, options):
-    color = js()(source)
+    color = js()(source, options)
     result = []
     for k in color:
         level, x1, x2 = (int(k[0]),

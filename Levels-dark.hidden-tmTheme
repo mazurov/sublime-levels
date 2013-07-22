@@ -2,40 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>comment</key>
-    <string>http://chriskempson.com</string>
     <key>name</key>
-    <string>Scope</string>
+    <string>Solarized (dark)</string>
     <key>settings</key>
     <array>
         <dict>
             <key>settings</key>
             <dict>
                 <key>background</key>
-                <string>#FDF6E3</string>
+                <string>#042029</string>
                 <key>caret</key>
-                <string>#000000</string>
+                <string>#819090</string>
                 <key>foreground</key>
-                <string>#586E75</string>
+                <string>#839496</string>
                 <key>invisibles</key>
-                <string>#EAE3C9</string>
+                <string>#0A2933</string>
                 <key>lineHighlight</key>
-                <string>#EEE8D5</string>
+                <string>#0A2933</string>
                 <key>selection</key>
-                <string>#073642</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>name</key>
-            <string>Comment</string>
-            <key>scope</key>
-            <string>comment</string>
-            <key>settings</key>
-            <dict>
-                <key>fontStyle</key>
-                <string></string>
-                <key>foreground</key>
-                <string>#93A1A1</string>
+                <string>#0A2933</string>
             </dict>
         </dict>
         <dict>
@@ -158,7 +143,7 @@
                 <key>foreground</key>
                 <string>#cf9369</string>
             </dict>
-        </dict> 
+        </dict>         
         <dict>
             <key>name</key>
             <string>Comment</string>
@@ -169,7 +154,7 @@
                 <key>fontStyle</key>
                 <string></string>
                 <key>foreground</key>
-                <string>#93A1A1</string>
+                <string>#586E75</string>
             </dict>
         </dict>
         <dict>
@@ -246,9 +231,9 @@
             <key>settings</key>
             <dict>
                 <key>fontStyle</key>
-                <string>bold</string>
+                <string></string>
                 <key>foreground</key>
-                <string>#073642</string>
+                <string>#738A05</string>
             </dict>
         </dict>
         <dict>
@@ -365,7 +350,7 @@
             <key>settings</key>
             <dict>
                 <key>foreground</key>
-                <string>#93A1A1</string>
+                <string>#586E75</string>
             </dict>
         </dict>
         <dict>
@@ -1117,6 +1102,17 @@
         </dict>
         <dict>
             <key>name</key>
+            <string>PHP: Class Names</string>
+            <key>scope</key>
+            <string>support.class.php</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#839496</string>
+            </dict>
+        </dict>
+        <dict>
+            <key>name</key>
             <string>PHP: []</string>
             <key>scope</key>
             <string>keyword.operator.index-start.php, keyword.operator.index-end.php</string>
@@ -1198,13 +1194,13 @@
             <key>name</key>
             <string>PHP: ::</string>
             <key>scope</key>
-            <string>support.class.php, keyword.operator.class</string>
+            <string>keyword.operator.class</string>
             <key>settings</key>
             <dict>
                 <key>fontStyle</key>
                 <string></string>
                 <key>foreground</key>
-                <string>#536871</string>
+                <string>#839496</string>
             </dict>
         </dict>
         <dict>
@@ -1234,6 +1230,17 @@
             <string>PHP: Class Function</string>
             <key>settings</key>
             <dict/>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>PHP: Semicolon</string>
+            <key>scope</key>
+            <string>punctuation.terminator.expression.php</string>
+            <key>settings</key>
+            <dict>
+                <key>foreground</key>
+                <string>#839496</string>
+            </dict>
         </dict>
         <dict>
             <key>name</key>
@@ -1996,8 +2003,16 @@
                 <string>#DC322F</string>
             </dict>
         </dict>
-    </array>               
+    </array>
     <key>uuid</key>
-    <string>82CCD69C-F2B1-4529-B39E-780F91F07609</string>
+    <string>A4299D9B-1DE5-4BC4-87F6-A757E71B1597</string>
+    <key>license</key>
+    <string>
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+    </string>
 </dict>
 </plist>

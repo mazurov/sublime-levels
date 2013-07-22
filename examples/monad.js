@@ -37,4 +37,4 @@ function MONAD(modifier) {
     return unit;
 }
 
-MONAD(modifier)
+MONAD(modifier);

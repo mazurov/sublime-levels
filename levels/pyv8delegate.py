@@ -4,10 +4,8 @@ import sublime
 import levels.pyv8loader as pyv8loader
 
 
-
-
-
 class SublimeLoaderDelegate(pyv8loader.LoaderDelegate):
+
     def __init__(self, user_settings):
         settings = {}
         for k in ['http_proxy', 'https_proxy', 'timeout']:
