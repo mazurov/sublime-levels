@@ -45,6 +45,7 @@ or
 * Javascript coloring support two modes: ```"mini"``` - highligt only "important" language constructions and ```"full"``` - highlight whole scopes.
 You can set this options by changing ```javascript_mode``` value in settings.
 
+![Mini mode](https://raw.github.com/mazurov/sublime-levels/master/examples/mini.png)
 
 ## Theme customization
 
