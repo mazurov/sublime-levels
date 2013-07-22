@@ -42,8 +42,8 @@ or
 
 * The **live** coloring mode  is switched off by default (the current plugin version works slow for large scripts). You can enable it in settings  by ```"live": true```.
 
-* Javascript coloring support two modes: ```mini``` - highligt only "important" language constructions and "full" - highlight whole scopes.
-You can set this options by changing ```javascript_mode``` setting.
+* Javascript coloring support two modes: ```"mini"``` - highligt only "important" language constructions and ```"full"``` - highlight whole scopes.
+You can set this options by changing ```javascript_mode``` value in settings.
 
 
 ## Theme customization
