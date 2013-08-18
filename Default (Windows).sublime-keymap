@@ -1,0 +1,10 @@
+[
+    {
+        "keys": ["ctrl+shift+l"], "command": "levels_update",
+        "context": [{"key": "selector", "operator": "equal", "operand": "source.js"}]
+    },
+    {
+        "keys": ["ctrl+shift+o"], "command": "levels_off",
+        "context": [{"key": "selector", "operator": "equal", "operand": "source.js"}]
+    }    
+]
