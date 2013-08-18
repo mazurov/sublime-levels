@@ -1,5 +1,5 @@
 ### 0.2.0 (22 July 2013)
 
 * New setting ```javascript_mode="full" | "mini"```.  ```mini``` - 
-highligted only "important" language constructions and "full" - highlight everything.
+highligt only "important" language constructions and "full" - highlight whole scopes.
 * Support zipped packages (Levels.sublime-package).
